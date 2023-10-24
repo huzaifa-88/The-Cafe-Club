@@ -73,18 +73,21 @@ class LoginPage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    MyButton(
-                      onTap: signUserIN,
-                      myText: 'Forgot Password?', 
-                      myDecoration: const BoxDecoration(color: Colors.transparent), 
-                      myPadding: const EdgeInsets.all(0), 
-                      myMargin: const EdgeInsets.symmetric(horizontal: 0), 
-                      myTextStyle: TextStyle(color: Colors.blue[300])
-                    ),
-                    // Text(
-                    //   'Forgot Password',
-                    //   style: TextStyle(color: Colors.grey[600]),
-                    // ),
+                    GestureDetector(
+                      onTap: () {
+                        // Navigator.pushNamedAndRemoveUntil(context, '/signup', (route) => false);
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const RegisterPage()),
+                        );
+                      },
+                      child: const Text(
+                        'Forgot Password',
+                          style: TextStyle(
+                          color: Colors.blue,
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
@@ -94,11 +97,12 @@ class LoginPage extends StatelessWidget {
               MyButton(
                 // onTap: signUserIN,
                 onTap: (){
+                  // Navigator.pushNamedAndRemoveUntil(context, '/home', (route) => false);
                   Navigator.push(
                     context, 
                     MaterialPageRoute(
-                      builder: (context)=>HomePage(),
-                      )
+                      builder: (context)=>const HomePage(),
+                    )
                   );
                 },
                 myText: 'Sign In',
@@ -160,21 +164,36 @@ class LoginPage extends StatelessWidget {
                 children: [
                   const Text('Not a member?'),
                   const SizedBox(width: 5),
-                  MyButton(
-                    myText: 'Create account', 
-                    myDecoration: const BoxDecoration(color: Colors.transparent), 
-                    myPadding: const EdgeInsets.all(0), 
-                    myMargin: const EdgeInsets.symmetric(horizontal: 0), 
-                    myTextStyle: TextStyle(color: Colors.blue[300]),
-                    onTap: (){
+                  GestureDetector(
+                    onTap: () {
+                      // Navigator.pushNamedAndRemoveUntil(context, '/signup', (route) => false);
                       Navigator.push(
-                        context, 
-                        MaterialPageRoute(
-                          builder: (context)=>RegisterPage()
-                          )
+                        context,
+                        MaterialPageRoute(builder: (context) => const RegisterPage()),
                       );
-                    }
-                  ),
+                    },
+                    child: const Text(
+                      'Create Account',
+                      style: TextStyle(
+                        color: Colors.blue,
+                      ),
+                    ),
+                  )
+                  // MyButton(
+                  //   myText: 'Create account', 
+                  //   myDecoration: const BoxDecoration(color: Colors.transparent), 
+                  //   myPadding: const EdgeInsets.all(0), 
+                  //   myMargin: const EdgeInsets.symmetric(horizontal: 0), 
+                  //   myTextStyle: TextStyle(color: Colors.blue[300]),
+                  //   onTap: (){
+                  //     Navigator.push(
+                  //       context, 
+                  //       MaterialPageRoute(
+                  //         builder: (context)=>RegisterPage()
+                  //         )
+                  //     );
+                  //   }
+                  // ),
                 ],
               )
             ],
